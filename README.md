@@ -71,10 +71,10 @@ The goal of this project is to:
    
    ![MySQL Workbench Data Import Screenshot](https://i.imgur.com/abc123.png) *(Optional: Add a screenshot if available)*  
 
-**Why Use This?**  
-- **Beginner-Friendly**: No command-line commands required.  
-- **Progress Tracking**: Visual progress bar for large files.  
-- **Error Logging**: Detailed error messages if the import fails.  
+      **Why Use This?**  
+      - **Beginner-Friendly**: No command-line commands required.  
+      - **Progress Tracking**: Visual progress bar for large files.  
+      - **Error Logging**: Detailed error messages if the import fails.  
 
 5. **Run Analysis Queries**:
    - Use MySQL Workbench or CLI to execute RFM segmentation and EDA queries (examples below).
