@@ -76,14 +76,6 @@ The goal of this project is to:
 - **Progress Tracking**: Visual progress bar for large files.  
 - **Error Logging**: Detailed error messages if the import fails.  
 
----
-
-This method is ideal for users who prefer **point-and-click workflows** over command-line tools. Let me know if you’d like to add screenshots or troubleshoot specific errors! 😊
-   ```sql
-   -- Run the generated SQL file in MySQL
-   mysql -u your_username -p superstore < superstore_clean.sql
-   ```
-
 5. **Run Analysis Queries**:
    - Use MySQL Workbench or CLI to execute RFM segmentation and EDA queries (examples below).
 
