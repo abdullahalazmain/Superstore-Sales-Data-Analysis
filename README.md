@@ -106,7 +106,7 @@ A streamlined workflow that saved time, reduced errors, and ensured **100% data 
 
 ---
 
-** ❓ Why This Project?**  
+**❓ Why This Project?**  
 This project demonstrates skills in **database management**, **data wrangling**, and **customer behavior analysis**. It provides a template for handling real-world sales data and actionable insights through RFM segmentation.  
   
 --- 
