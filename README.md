@@ -1,7 +1,3 @@
-Here’s a revised **README.md** tailored to your workflow using Google Sheets and Rebasedata’s CSV-to-SQL tool:
-
----
-
 # Superstore Sales Data Analysis | RFM Segmentation
 
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
