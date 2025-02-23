@@ -13,6 +13,7 @@ This repository contains an end-to-end data analysis project using **Superstore 
 The goal of this project is to:
 - Clean and format raw sales data.
 - Convert the cleaned CSV to SQL.
+- Create a database and table under that database.
 - Import the SQL file into MySQL and perform exploratory analysis.
 - Segment customers using **RFM (Recency, Frequency, Monetary)** analysis.
 
@@ -47,14 +48,43 @@ The goal of this project is to:
 2. **Convert CSV to SQL**:
    - Upload `superstore_clean.csv` to **[Rebasedata](https://www.rebasedata.com/)**.
    - Download the generated `.sql` file (includes table schema and data).
-
+3. **Create Database in MySQL**:
+   - If the `superstore` database doesn’t exist, create it first:  
+  ```sql
+  CREATE DATABASE superstore;
+  ```
 3. **Import SQL into MySQL**:
+   - **Steps**:  
+      1. **Connect to Server**:  
+            Open MySQL Workbench and connect to your MySQL server.  
+
+      2. **Open Data Import**:  
+            Go to `Server` > `Data Import` in the top menu.  
+
+      3. **Select Import Options**:  
+          - Choose `Import from Self-Contained File`.  
+         - Browse and select your `superstore_clean.sql` file.  
+         - Under `Default Target Schema`, select or create the `superstore` database.  
+
+      4. **Start Import**:  
+            Click `Start Import` at the bottom-right.  
+   
+   ![MySQL Workbench Data Import Screenshot](https://i.imgur.com/abc123.png) *(Optional: Add a screenshot if available)*  
+
+**Why Use This?**  
+- **Beginner-Friendly**: No command-line commands required.  
+- **Progress Tracking**: Visual progress bar for large files.  
+- **Error Logging**: Detailed error messages if the import fails.  
+
+---
+
+This method is ideal for users who prefer **point-and-click workflows** over command-line tools. Let me know if you’d like to add screenshots or troubleshoot specific errors! 😊
    ```sql
    -- Run the generated SQL file in MySQL
    mysql -u your_username -p superstore < superstore_clean.sql
    ```
 
-4. **Run Analysis Queries**:
+5. **Run Analysis Queries**:
    - Use MySQL Workbench or CLI to execute RFM segmentation and EDA queries (examples below).
 
 ---
