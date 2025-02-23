@@ -4,7 +4,7 @@
 ![Google Sheets](https://img.shields.io/badge/Google_Sheets-Data_Cleaning-green)
 ![CSV-to-SQL](https://img.shields.io/badge/Rebasedata-CSV_to_SQL_Tool-orange)
 
-This repository contains an end-to-end data analysis project using **Superstore Sales Data**. The project focuses on setting up a **MySQL** database, cleaning and transforming raw sales data, performing exploratory analysis (EDA), and implementing **RFM (Recency, Frequency, Monetary) segmentation** to categorize customers based on their purchasing behavior.
+This repository contains an end-to-end data analysis project using **Superstore Sales Data**. The project focuses on setting up a **MySQL** database, cleaning and transforming raw sales data, performing exploratory analysis **(EDA)**, and implementing **RFM (Recency, Frequency, Monetary) segmentation** to categorize customers based on their purchasing behavior.
 
 ---
 
@@ -30,7 +30,7 @@ The goal of this project is to:
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
-- MySQL Server
+- MySQL Workbench
 - Google Sheets (or Excel) for data cleaning
 - [Rebasedata](https://www.rebasedata.com/) (free CSV-to-SQL converter)
 
