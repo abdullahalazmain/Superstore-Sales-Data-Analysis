@@ -83,7 +83,7 @@ The goal of this project is to:
    - Use MySQL Workbench or CLI to execute RFM segmentation and EDA queries (examples below).
 
 ---
-## 🛠️ Another Way of Installation & Setup
+## 🔄 Alternative Way of Installation & Setup
 1. **Database Setup**: Created a MySQL database and table schema tailored for the Superstore dataset.
 2. **Bulk Data Insertion**: Efficiently imported the dataset into MySQL using `Table Data Import Wizard` or `LOAD DATA INFILE`.
 3. **Data Cleaning & Validation**:  
