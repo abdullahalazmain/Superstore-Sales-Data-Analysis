@@ -11,8 +11,8 @@ This repository contains an end-to-end data analysis project using **Superstore 
 ## 📋 Overview
 
 The goal of this project is to:
-- Clean and format raw sales data using **Google Sheets**.
-- Convert the cleaned CSV to SQL using **[Rebasedata](https://www.rebasedata.com/)**.
+- Clean and format raw sales data.
+- Convert the cleaned CSV to SQL.
 - Import the SQL file into MySQL and perform exploratory analysis.
 - Segment customers using **RFM (Recency, Frequency, Monetary)** analysis.
 
