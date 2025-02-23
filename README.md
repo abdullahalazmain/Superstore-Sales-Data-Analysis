@@ -6,6 +6,9 @@
 
 This repository contains an end-to-end data analysis project using **Superstore Sales Data**. The project focuses on setting up a **MySQL** database, cleaning and transforming raw sales data, performing exploratory analysis **(EDA)**, and implementing **RFM (Recency, Frequency, Monetary) segmentation** to categorize customers based on their purchasing behavior.
 
+**❓ Why This Project?**  
+This project demonstrates skills in **database management**, **data wrangling**, and **customer behavior analysis**. It provides a template for handling real-world sales data and actionable insights through RFM segmentation. 
+
 ---
 
 ## 📋 Overview
@@ -125,11 +128,6 @@ I chose **Google Sheets** and **Rebasedata** for data cleaning and SQL conversio
 ### The Result:  
 A streamlined workflow that saved time, reduced errors, and ensured **100% data integrity** during migration.  
 
----
-
-**❓ Why This Project?**  
-This project demonstrates skills in **database management**, **data wrangling**, and **customer behavior analysis**. It provides a template for handling real-world sales data and actionable insights through RFM segmentation.  
-  
 --- 
 
 ## 📊 Usage
