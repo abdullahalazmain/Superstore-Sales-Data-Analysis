@@ -18,7 +18,7 @@ The goal of this project is to:
 - Convert the cleaned CSV to SQL.
 - Create a database and table under that database.
 - Import the SQL file into MySQL.
-- Clean Formatting and Handling of Imported Data,
+- Clean Formatting and Handling of Imported Data.(**EDA**)
 - Perform exploratory Data analysis.
 - Segment customers using **RFM (Recency, Frequency, Monetary)** analysis.
 
@@ -146,6 +146,27 @@ The goal of this project is to:
 
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/c94439a82acb7b5e91f6c714609c320387d3a7e7/Images/Fix%20date%20and%20Numeric%20fields%20Screenshot.jpg)
 
+      6. **Total Sales & Profit**
+        ```sql
+         SELECT 
+             ROUND(SUM(Sales)) AS Total_Sales,
+             ROUND(SUM(Profit)) AS Total_Profit
+         FROM sales_data;
+        ```
+
+       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/56bb62986cc7c611c1f2de5d9a02ce639e63cd6e/Images/Total_sales_%26_Profit%20Screenshot.jpg)
+
+      7. **Sales by City**
+        ```sql
+         SELECT 
+             City,
+             ROUND(SUM(Sales)) AS City_Sales
+         FROM sales_data
+         GROUP BY City
+         ORDER BY City_Sales DESC;
+        ```
+
+       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/55f00d8d0ae792c13e87299099583d0c109a2a70/Images/Sales%20by%20City%20Screenshot.jpg)
 
 ---
 ## 🔄 Alternative Way of Setup & Queries
