@@ -72,7 +72,7 @@ The goal of this project is to:
       4. **Start Import**:  
             Click `Start Import` at the bottom-right.  
    
-   ![MySQL Workbench Data Import Screenshot](https://i.imgur.com/abc123.png) *(Optional: Add a screenshot if available)*  
+   ![MySQL Workbench Data Import Screenshot](Images/MySQL Workbench Data Import Screenshot.jpg) *(Optional: Add a screenshot if available)*  
 
       **Why Use This?**  
       - **Beginner-Friendly**: No command-line commands required.  
