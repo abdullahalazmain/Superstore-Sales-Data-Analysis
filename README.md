@@ -17,21 +17,22 @@ The goal of this project is to:
 - Clean and format raw sales data.
 - Convert the cleaned CSV to SQL.
 - Create a database and table under that database.
-- Import the SQL file into MySQL and perform exploratory analysis.
+- Import the SQL file into MySQL.
+- Perform exploratory Data analysis.
 - Segment customers using **RFM (Recency, Frequency, Monetary)** analysis.
 
 ---
 
 ## 🚀 Features
 
-- **Data Cleaning**: Handled blank cells, renamed columns, and fixed date formats in Google Sheets.
-- **CSV-to-SQL Conversion**: Automated SQL schema creation and bulk insertion using Rebasedata.
+- **Data Cleaning**: Handled blank cells, renamed columns, and fixed date formats in Google Sheets or Microsoft Excel.
+- **CSV-to-SQL Conversion**: Automated SQL schema creation and bulk insertion using CSV to SQL Converter Tools.
 - **RFM Segmentation**: SQL queries to classify customers into actionable groups (e.g., "Loyal Customers", "At-Risk").
 - **Exploratory Analysis**: Analyzed sales trends, regional performance, and product profitability.
 
 ---
 
-## 🛠️ Installation & Setup
+## 🛠️ Setup & Queries
 
 ### Prerequisites
 - MySQL Workbench
@@ -83,7 +84,7 @@ The goal of this project is to:
    - Use MySQL Workbench or CLI to execute RFM segmentation and EDA queries (examples below).
 
 ---
-## 🔄 Alternative Way of Installation & Setup
+## 🔄 Alternative Way of Setup & Queries
 1. **Database Setup**: Created a MySQL database and table schema tailored for the Superstore dataset.
 2. **Bulk Data Insertion**: Efficiently imported the dataset into MySQL using `Table Data Import Wizard` or `LOAD DATA INFILE`.
 3. **Data Cleaning & Validation**:  
