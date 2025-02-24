@@ -41,7 +41,7 @@ The goal of this project is to:
 ### Steps:
 
 1. **Data Cleaning in Google Sheets**:
-   - Open `superstore_raw.csv` in Google Sheets.
+   - Open `superstore_raw.xlsx` in Google Sheets.
    - Perform cleaning:
      - Fill blank cells (e.g., using `CTRL + Click` or `Go To > Special > Blanks`).
      - Update column names for consistency (e.g., `Order ID` → `order_id`).
