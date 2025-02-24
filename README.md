@@ -42,38 +42,44 @@ The goal of this project is to:
 ### Steps:
 
 1. **Data Cleaning in Google Sheets**:
-   - Open `superstore_raw.xlsx ` in Google Sheets. [superstore_raw.xlsx](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/42f4d5ca168bb9a02a098f2a6e8271a85738d6e5/superstore_raw.xlsx)
+   - Open [superstore_raw.xlsx](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/42f4d5ca168bb9a02a098f2a6e8271a85738d6e5/superstore_raw.xlsx) in Google Sheets. 
    - Perform cleaning:
      - Fill blank cells (e.g., using `CTRL + Click` or `Go To > Special > Blanks`).
      - Update column names for consistency (e.g., `Order ID` → `order_id`).
      - Fix date formats (e.g., `MM/DD/YYYY` → MySQL-friendly `YYYY-MM-DD`).
-   - Export cleaned data as `superstore_clean.csv`.
+   - Export cleaned data as [superstore_clean.csv](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/e2050a62d85c0c426128e1dac51a5cabe805bea6/superstore_clean.csv) . 
 
 2. **Convert CSV to SQL**:
-   - Upload `superstore_clean.csv` to **[Rebasedata](https://www.rebasedata.com/)**.
+   - Upload [superstore_clean.csv](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/e2050a62d85c0c426128e1dac51a5cabe805bea6/superstore_clean.csv) to **[Rebasedata](https://www.rebasedata.com/)**.
    - Download the generated `.sql` file (includes table schema and data).
 3. **Create Database in MySQL**:
+   - Open your server in MYSQL Workbench.
    - If the `superstore` database doesn’t exist, create it first:  
   ```sql
   CREATE DATABASE superstore;
   ```
+   - Result :
+     
+     ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/36eb3ff56f5fb32ec1bb385ad04580e474260c25/Images/Create_Database%20Result%20Screenshot.jpg)
+     
 3. **Import SQL into MySQL**:
    - **Steps**:  
       1. **Connect to Server**:  
             Open MySQL Workbench and connect to your MySQL server.  
 
       2. **Open Data Import**:  
-            Go to `Server` > `Data Import` in the top menu.  
+            Go to `Server` > `Data Import` in the top menu.
+         ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/4094bd9da417b742fea5bfcb4f5220fc9c0b101f/Images/Open_data_import%20Screenshot.jpg)
 
-      3. **Select Import Options**:  
+      4. **Select Import Options**:  
           - Choose `Import from Self-Contained File`.  
          - Browse and select your `superstore_clean.sql` file.  
-         - Under `Default Target Schema`, select or create the `superstore` database.  
+         - Under `Default Target Schema`, select the `superstore` database.  
 
-      4. **Start Import**:  
+      5. **Start Import**:  
             Click `Start Import` at the bottom-right.  
    
-   ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/65790315cacc38ba795e643560d9195d00525cf5/Images/MySQL%20Workbench%20Data%20Import%20Screenshot.jpg)
+   ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/071f320cdc15936f8f5260c10000b0a0a56cea8a/Images/My%20SQL%20workbench%20data%20import%20Screenshot.jpg)
 
       **Why Use This?**  
       - **Beginner-Friendly**: No command-line commands required.  
