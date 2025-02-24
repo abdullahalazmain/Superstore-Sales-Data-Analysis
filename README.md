@@ -18,8 +18,8 @@ The goal of this project is to:
 - Convert the cleaned CSV to SQL.
 - Create a database and table under that database.
 - Import the SQL file into MySQL.
-- Clean Formatting and Handling of Imported Data.(**EDA**)
-- Perform exploratory Data analysis.
+- Clean Formatting and Handling of Imported Data.
+- Perform exploratory Data analysis.(**EDA**)
 - Segment customers using **RFM (Recency, Frequency, Monetary)** analysis.
 
 ---
