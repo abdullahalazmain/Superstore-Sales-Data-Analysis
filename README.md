@@ -18,6 +18,7 @@ The goal of this project is to:
 - Convert the cleaned CSV to SQL.
 - Create a database and table under that database.
 - Import the SQL file into MySQL.
+- Clean Formatting and Handling of Imported Data,
 - Perform exploratory Data analysis.
 - Segment customers using **RFM (Recency, Frequency, Monetary)** analysis.
 
@@ -53,7 +54,7 @@ The goal of this project is to:
    - Upload [superstore_clean.csv](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/e2050a62d85c0c426128e1dac51a5cabe805bea6/superstore_clean.csv) to **[Rebasedata](https://www.rebasedata.com/)**.
    - Download the generated `.sql` file (includes table schema and data).
 3. **Create Database in MySQL**:
-   - Open your server in MYSQL Workbench.
+   - Open your server in `MySQL Workbench`.
    - If the `superstore` database doesn’t exist, create it first:  
   ```sql
   CREATE DATABASE superstore;
@@ -87,7 +88,64 @@ The goal of this project is to:
       - **Error Logging**: Detailed error messages if the import fails.  
 
 5. **Run Analysis Queries**:
-   - Use MySQL Workbench or CLI to execute RFM segmentation and EDA queries (examples below).
+   - **Steps**:
+     
+       1. **Rename the Table**
+          
+      ```sql
+         RENAME TABLE Superstore_clean TO Sales_data;
+      ```
+        
+      ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/50f63cf9aa2c2e51ab0a8736d938d4c7e3c60c0d/Images/Rename_table%20Screenshot.jpg)
+   
+       2. **Get the Row Count of the Table**
+          
+      ```sql
+         SELECT COUNT(*) AS row_count FROM Sales_data;
+      ```
+        
+      ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/f3716fc88c22d0ef661f2278bb76e0c71608749e/Images/Raw_count%20Result%20Screenshot.jpg)
+
+      3. **Describe the structure**
+          
+      ```sql
+         DESCRIBE sales_data;
+      ```
+        
+      ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/ac411994429204e61416f4a470453464cf5a9d6c/Images/Describe_the_structure_Screenshot.jpg)
+     
+      4. **Modify Date column types**
+        ```sql
+         ALTER TABLE sales_data
+         MODIFY order_date DATE,
+         MODIFY ship_date DATE;
+        ```
+
+       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/c94439a82acb7b5e91f6c714609c320387d3a7e7/Images/Modify_Date_types%20Screenshot.jpg)
+
+      5. **Fix Date Columns & Handle numeric fields**
+         - When you update Table , You need to disable safe update mode.
+        ```sql
+         -- Disable safe update mode
+         SET SQL_SAFE_UPDATES = 0;
+         
+         -- Fix Date Columns
+           UPDATE sales_data
+           SET Order_Date = STR_TO_DATE(Order_Date, '%Y-%m-%d'),
+               Ship_Date = STR_TO_DATE(Ship_Date, '%Y-%m-%d');
+         
+         -- Handle numeric fields
+         UPDATE sales_data 
+         SET Product_Base_Margin = NULL 
+         WHERE Product_Base_Margin = 'null' 
+            OR Product_Base_Margin = '';
+            
+         -- Re-enable safe update mode
+         SET SQL_SAFE_UPDATES = 1;
+        ```
+
+       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/c94439a82acb7b5e91f6c714609c320387d3a7e7/Images/Fix%20date%20and%20Numeric%20fields%20Screenshot.jpg)
+
 
 ---
 ## 🔄 Alternative Way of Setup & Queries
