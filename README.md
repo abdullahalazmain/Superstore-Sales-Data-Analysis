@@ -72,7 +72,8 @@ The goal of this project is to:
       4. **Start Import**:  
             Click `Start Import` at the bottom-right.  
    
-https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/aa8cc8e9e510bd5544b3735b653943df78dc043a/Images/MySQL%20Workbench%20Data%20Import%20Screenshot.jpg
+(Images/MySQL Workbench Data Import Screenshot.jpg)
+
 
       **Why Use This?**  
       - **Beginner-Friendly**: No command-line commands required.  
