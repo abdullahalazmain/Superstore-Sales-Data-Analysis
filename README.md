@@ -42,7 +42,7 @@ The goal of this project is to:
 ### Steps:
 
 1. **Data Cleaning in Google Sheets**:
-   - Open `superstore_raw.xlsx ` in Google Sheets. [superstore_raw.xlsx](https://www.rebasedata.com/)
+   - Open `superstore_raw.xlsx ` in Google Sheets. [superstore_raw.xlsx](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/42f4d5ca168bb9a02a098f2a6e8271a85738d6e5/superstore_raw.xlsx)
    - Perform cleaning:
      - Fill blank cells (e.g., using `CTRL + Click` or `Go To > Special > Blanks`).
      - Update column names for consistency (e.g., `Order ID` → `order_id`).
