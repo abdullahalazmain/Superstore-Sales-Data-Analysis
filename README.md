@@ -168,6 +168,66 @@ The goal of this project is to:
 
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/55f00d8d0ae792c13e87299099583d0c109a2a70/Images/Sales%20by%20City%20Screenshot.jpg)
 
+      8. **Top 10 Products**
+        ```sql
+         SELECT 
+             Product_Name,
+             ROUND(SUM(Sales)) AS Total_Sales
+         FROM sales_data
+         GROUP BY Product_Name
+         ORDER BY Total_Sales DESC
+         LIMIT 10;
+        ```
+
+       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/68007f451620f6fd785ec8ff0df18b17baccc206/Images/Top10%20Products%20Result%20Screenshot.jpg)
+
+      9. **Calculate RFM Metrics**
+        ```sql
+         WITH rfm_raw AS (
+             SELECT
+                 Customer_ID,
+                 DATEDIFF('2014-01-01', MAX(Order_Date)) AS Recency, -- Assuming dataset ends in 2013
+                 COUNT(Order_ID) AS Frequency,
+                 SUM(Sales) AS Monetary
+             FROM sales_data
+             GROUP BY Customer_ID
+         )
+         SELECT
+             Customer_ID,
+             Recency,
+             Frequency,
+             Monetary,
+             NTILE(3) OVER (ORDER BY Recency DESC) AS R_Score,
+             NTILE(3) OVER (ORDER BY Frequency) AS F_Score,
+             NTILE(3) OVER (ORDER BY Monetary) AS M_Score
+         FROM rfm_raw;
+        ```
+
+       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/b22498004c5b60301875b581459fc91d8cd1983e/Images/Calculate%20RFM%20Metrics%20Results%20Screenshot.jpg)
+
+      10. **Segment Customers**
+        ```sql
+         WITH rfm_raw AS (
+             SELECT
+                 Customer_ID,
+                 DATEDIFF('2014-01-01', MAX(Order_Date)) AS Recency, -- Assuming dataset ends in 2013
+                 COUNT(Order_ID) AS Frequency,
+                 SUM(Sales) AS Monetary
+             FROM sales_data
+             GROUP BY Customer_ID
+         )
+         SELECT
+             Customer_ID,
+             Recency,
+             Frequency,
+             Monetary,
+             NTILE(3) OVER (ORDER BY Recency DESC) AS R_Score,
+             NTILE(3) OVER (ORDER BY Frequency) AS F_Score,
+             NTILE(3) OVER (ORDER BY Monetary) AS M_Score
+         FROM rfm_raw;
+        ```
+
+       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/b22498004c5b60301875b581459fc91d8cd1983e/Images/Calculate%20RFM%20Metrics%20Results%20Screenshot.jpg)
 ---
 ## 🔄 Alternative Way of Setup & Queries
 1. **Database Setup**: Created a MySQL database and table schema tailored for the Superstore dataset.
