@@ -147,8 +147,8 @@ The goal of this project is to:
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/c94439a82acb7b5e91f6c714609c320387d3a7e7/Images/Fix%20date%20and%20Numeric%20fields%20Screenshot.jpg)
 
 #### EDA
-   - **Steps**: 
-      6. **Total Sales & Profit**
+   - **Steps**:
+        1. **Total Sales & Profit**
         ```sql
          SELECT 
              ROUND(SUM(Sales)) AS Total_Sales,
@@ -158,7 +158,7 @@ The goal of this project is to:
 
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/56bb62986cc7c611c1f2de5d9a02ce639e63cd6e/Images/Total_sales_%26_Profit%20Screenshot.jpg)
 
-      7. **Sales by City**
+        2. **Sales by City**
         ```sql
          SELECT 
              City,
@@ -170,7 +170,7 @@ The goal of this project is to:
 
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/55f00d8d0ae792c13e87299099583d0c109a2a70/Images/Sales%20by%20City%20Screenshot.jpg)
 
-      8. **Top 10 Products**
+        3. **Top 10 Products**
         ```sql
          SELECT 
              Product_Name,
@@ -183,7 +183,7 @@ The goal of this project is to:
 
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/68007f451620f6fd785ec8ff0df18b17baccc206/Images/Top10%20Products%20Result%20Screenshot.jpg)
 
-      9. **Calculate RFM Metrics**
+        4. **Calculate RFM Metrics**
         ```sql
          WITH rfm_raw AS (
              SELECT
@@ -207,7 +207,7 @@ The goal of this project is to:
 
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/b22498004c5b60301875b581459fc91d8cd1983e/Images/Calculate%20RFM%20Metrics%20Results%20Screenshot.jpg)
 
-      10. **Segment Customers**
+        5. **Segment Customers**
         ```sql
          WITH rfm_raw AS (
              SELECT
