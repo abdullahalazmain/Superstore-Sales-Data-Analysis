@@ -236,7 +236,7 @@ The goal of this project is to:
 
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis-In-MySQL/blob/983065f39094db1c5c1b60a4dfa5ab4a5c7422ce/Images/Create%20or%20Replace%20View%20for%20RFM%20Raw%20Metrics.jpg)
 
-        5. **RFM Segmentation Using the View**
+        2. **RFM Segmentation Using the View**
         ```sql
          CREATE OR REPLACE VIEW RFM_SCORES AS
          WITH rfm_scores AS (
