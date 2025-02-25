@@ -1,4 +1,4 @@
-# Superstore Sales Data Analysis | RFM Segmentation
+# Superstore Sales Data Analysis | EDA | RFM Segmentation
 
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
 ![Google Sheets](https://img.shields.io/badge/Google_Sheets-Data_Cleaning-green)
