@@ -11,6 +11,24 @@ This project demonstrates skills in **database management**, **data wrangling**,
 
 ---
 
+## Table of Contents
+- [Project Overview](#📋-Overview)
+- [Features](#🚀-Features)
+  - [Setup & Queries](#🛠️-Setup-&-Queries)
+  - [Missing Values](#missing-values)
+- [Basic EDA](#basic-eda)
+  - [Number of Apps per Genre](#number-of-apps-per-genre)
+  - [App Ratings](#app-ratings)
+- [Data Analysis](#data-analysis)
+  - [Paid vs. Free Apps](#paid-vs-free-apps)
+  - [Language Support vs. Ratings](#language-support-vs-ratings)
+  - [Genres with Low Ratings](#genres-with-low-ratings)
+  - [Description Length vs. Ratings](#description-length-vs-ratings)
+  - [Top Rated Apps per Genre](#top-rated-apps-per-genre)
+- [Conclusion](#conclusion)
+
+---
+
 ## 📋 Overview
 
 The goal of this project is to:
