@@ -64,8 +64,8 @@ The goal of this project is to:
      ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/36eb3ff56f5fb32ec1bb385ad04580e474260c25/Images/Create_Database%20Result%20Screenshot.jpg)
      
 3. **Import SQL into MySQL**:
-   - **Steps**:  
-      1. **Connect to Server**:  
+   - **Steps**  
+      - 1. **Connect to Server**:  
             Open MySQL Workbench and connect to your MySQL server.  
 
       2. **Open Data Import**:  
@@ -88,7 +88,7 @@ The goal of this project is to:
       - **Error Logging**: Detailed error messages if the import fails.  
 
 5. **Run Analysis Queries**:
-   - **Steps**:
+   - **Steps**
      
        1. **Rename the Table**
           
