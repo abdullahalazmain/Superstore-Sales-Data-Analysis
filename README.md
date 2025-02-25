@@ -87,8 +87,9 @@ The goal of this project is to:
       - **Error Logging**: Detailed error messages if the import fails.  
 
 ### **Queries**
-   - **Steps**:
-     
+
+#### Data Cleaning , Handling & Standardized
+   - **Steps**:  
        1. **Rename the Table**
           
       ```sql
@@ -145,6 +146,8 @@ The goal of this project is to:
 
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/c94439a82acb7b5e91f6c714609c320387d3a7e7/Images/Fix%20date%20and%20Numeric%20fields%20Screenshot.jpg)
 
+#### EDA
+   - **Steps**: 
       6. **Total Sales & Profit**
         ```sql
          SELECT 
