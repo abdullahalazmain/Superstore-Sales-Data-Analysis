@@ -50,10 +50,10 @@ The goal of this project is to:
      - Fix date formats (e.g., `MM/DD/YYYY` → MySQL-friendly `YYYY-MM-DD`).
    - Export cleaned data as [superstore_clean.csv](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/e2050a62d85c0c426128e1dac51a5cabe805bea6/superstore_clean.csv) . 
 
-2. **Convert CSV to SQL**:
+#### 2. **Convert CSV to SQL**:
    - Upload [superstore_clean.csv](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/e2050a62d85c0c426128e1dac51a5cabe805bea6/superstore_clean.csv) to **[Rebasedata](https://www.rebasedata.com/)**.
    - Download the generated `.sql` file (includes table schema and data).
-3. **Create Database in MySQL**:
+#### 3. **Create Database in MySQL**:
    - Open your server in `MySQL Workbench`.
    - If the `superstore` database doesn’t exist, create it first:  
   ```sql
@@ -63,7 +63,7 @@ The goal of this project is to:
      
      ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/36eb3ff56f5fb32ec1bb385ad04580e474260c25/Images/Create_Database%20Result%20Screenshot.jpg)
      
-3. **Import SQL into MySQL**:
+#### 4. **Import SQL into MySQL**:
    - **Steps**:  
       1. **Connect to Server**:  
             Open MySQL Workbench and connect to your MySQL server.  
