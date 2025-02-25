@@ -269,19 +269,57 @@ The goal of this project is to:
         ```
 
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis-In-MySQL/blob/6e4a0dac5c6e677b0047d3e4c03734786f0eb292/Images/RFM%20Segmentation%20Using%20the%20View.jpg)
+     
 ---
+
 ## 🔄 Alternative Way of Setup & Queries
 1. **Database Setup**: Created a MySQL database and table schema tailored for the Superstore dataset.
-2. **Bulk Data Insertion**: Efficiently imported the dataset into MySQL using `Table Data Import Wizard` or `LOAD DATA INFILE`.
-3. **Data Cleaning & Validation**:  
+           ```sql
+         -- Create database
+         CREATE DATABASE IF NOT EXISTS Superstore;
+         USE Superstore;
+         
+         -- Create table with corrected schema
+         DROP TABLE IF EXISTS sales_data;
+         CREATE TABLE sales_data (
+             Row_ID INT,
+             Order_Priority VARCHAR(13),
+             Discount DECIMAL(3,2),
+             Unit_Price DECIMAL(6,2),
+             Shipping_Cost DECIMAL(5,2),
+             Customer_ID INT,
+             Customer_Name VARCHAR(28),
+             Ship_Mode VARCHAR(14),
+             Customer_Segment VARCHAR(14),
+             Product_Category VARCHAR(15),
+             Product_Sub_Category VARCHAR(30),
+             Product_Container VARCHAR(10),
+             Product_Name VARCHAR(98),
+             Product_Base_Margin DECIMAL(4,2), -- Changed from VARCHAR
+             Region VARCHAR(7),
+             Manager VARCHAR(7),
+             State_or_Province VARCHAR(20),
+             City VARCHAR(19),
+             Postal_Code INT,
+             Order_Date DATE, -- Changed from VARCHAR
+             Ship_Date DATE, -- Changed from VARCHAR
+             Profit DECIMAL(7,2),
+             Quantity_ordered_new INT,
+             Sales DECIMAL(8,2),
+             Order_ID INT,
+             Return_Status VARCHAR(12)
+         );
+        ```
+3. **Bulk Data Insertion**: Efficiently imported the dataset into MySQL using `Table Data Import Wizard` or `LOAD DATA INFILE`.
+4. **Data Cleaning & Validation**:  
    - Standardized date formats.  
    - Handled missing/duplicate values.  
    - Ensured consistent data types (e.g., sales, profit as `DECIMAL`, dates as `DATE`).  
    - Updated table schema for optimization (e.g., indexing, constraints).  
-4. **Exploratory Data Analysis (EDA)**:  
+5. **Exploratory Data Analysis (EDA)**:  
    - Analyzed sales trends, regional performance, and product category insights.  
    - Identified top customers and profitable products.  
-5. **RFM Customer Segmentation**:  
+6. **RFM Customer Segmentation**:  
    - Calculated **Recency**, **Frequency**, and **Monetary Value** metrics.  
    - Segmented customers into groups (e.g., "High-Value", "At-Risk", "Champions") for targeted strategies.
 
@@ -316,44 +354,6 @@ I chose **Google Sheets** and **Rebasedata** for data cleaning and SQL conversio
 A streamlined workflow that saved time, reduced errors, and ensured **100% data integrity** during migration.  
 
 --- 
-
-## 📊 Usage
-
-### Example Queries
-
-1. **RFM Segmentation**:
-   ```sql
-   WITH rfm AS (
-       SELECT
-           customer_id,
-           DATEDIFF(CURDATE(), MAX(order_date)) AS recency,
-           COUNT(order_id) AS frequency,
-           SUM(sales) AS monetary
-       FROM sales
-       GROUP BY customer_id
-   )
-   SELECT
-       customer_id,
-       recency,
-       frequency,
-       monetary,
-       CASE
-           WHEN recency < 30 AND frequency > 5 AND monetary > 1000 THEN 'Champions'
-           WHEN recency > 365 THEN 'Inactive'
-           ELSE 'Needs Attention'
-       END AS rfm_segment
-   FROM rfm;
-   ```
-
-2. **Sales by Region**:
-   ```sql
-   SELECT region, SUM(sales) AS total_sales
-   FROM sales
-   GROUP BY region
-   ORDER BY total_sales DESC;
-   ```
-
----
 
 ## 🛠️ Tools Used
 - **Data Cleaning**: Google Sheets
