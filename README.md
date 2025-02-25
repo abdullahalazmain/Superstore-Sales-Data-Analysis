@@ -12,7 +12,7 @@ This project demonstrates skills in **database management**, **data wrangling**,
 ---
 
 ## Table of Contents
-- [Project Overview](#📋-Overview)
+- [Project Overview](#https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis-In-MySQL/blob/main/README.md#-overview)
 - [Features](#🚀-Features)
   - [Setup & Queries](#🛠️-Setup-&-Queries)
   - [Missing Values](#missing-values)
