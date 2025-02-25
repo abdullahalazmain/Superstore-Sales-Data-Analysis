@@ -59,9 +59,8 @@ The goal of this project is to:
   ```sql
   CREATE DATABASE superstore;
   ```
-   - Result :
      
-     ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/36eb3ff56f5fb32ec1bb385ad04580e474260c25/Images/Create_Database%20Result%20Screenshot.jpg)
+   ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/36eb3ff56f5fb32ec1bb385ad04580e474260c25/Images/Create_Database%20Result%20Screenshot.jpg)
      
 #### 4. **Import SQL into MySQL**:
    - **Steps**:  
