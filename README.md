@@ -123,7 +123,7 @@ The goal of this project is to:
 
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/c94439a82acb7b5e91f6c714609c320387d3a7e7/Images/Modify_Date_types%20Screenshot.jpg)
 
-      5. **Fix Date Columns & Handle numeric fields**
+     5. **Fix Date Columns & Handle numeric fields**
          - When you update Table , You need to disable safe update mode.
         ```sql
          -- Disable safe update mode
@@ -145,6 +145,7 @@ The goal of this project is to:
         ```
 
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/c94439a82acb7b5e91f6c714609c320387d3a7e7/Images/Fix%20date%20and%20Numeric%20fields%20Screenshot.jpg)
+
 
 #### EDA
    - **Steps**:
@@ -183,7 +184,45 @@ The goal of this project is to:
 
        ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/68007f451620f6fd785ec8ff0df18b17baccc206/Images/Top10%20Products%20Result%20Screenshot.jpg)
 
-        4. **Calculate RFM Metrics**
+        4. **Top 10 Most Profitable Products**
+        ```sql
+         SELECT 
+             Product_Name,
+             ROUND(SUM(Profit)) AS Total_Profit
+         FROM sales_data
+         GROUP BY Product_Name
+         ORDER BY Total_Profit DESC
+         LIMIT 10; 
+        ```
+
+       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis-In-MySQL/blob/e778c9362d50aaa7b454466d5fa2d4000892e517/Images/Top%2010%20most%20profitable%20products%20Result.jpg)
+
+        5. **Monthly Sales Trends**
+        ```sql
+         SELECT 
+             DATE_FORMAT(Order_Date, '%Y-%m') AS Month,
+             ROUND(SUM(Sales)) AS Monthly_Sales
+         FROM sales_data
+         GROUP BY Month
+         ORDER BY Month;
+        ```
+
+       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis-In-MySQL/blob/e778c9362d50aaa7b454466d5fa2d4000892e517/Images/Monthly%20Sales%20Trends%20Results%20Screenshot.jpg)
+
+        6. **Return Rate Analysis**
+        ```sql
+         SELECT 
+             Return_Status,
+             COUNT(*) AS Return_Count,
+             ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM sales_data), 2) AS Return_Percentage
+         FROM sales_data
+         GROUP BY Return_Status;
+        ```
+       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis-In-MySQL/blob/ceafa7bac5bd7ee4a25eada64b5a819f4c29d735/Images/Return%20Rate%20Analysis%20Result%20Screenshot.jpg)
+
+#### **RFM Segmentation**
+   - **Steps**:
+        1. **Calculate RFM Metrics**
         ```sql
          WITH rfm_raw AS (
              SELECT
