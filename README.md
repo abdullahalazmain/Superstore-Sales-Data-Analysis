@@ -40,7 +40,7 @@ The goal of this project is to:
 - Google Sheets (or Excel) for data cleaning
 - [Rebasedata](https://www.rebasedata.com/) (free CSV-to-SQL converter)
 
-### Steps
+### Setup
 
 #### 1. **Data Cleaning in Google Sheets**:
    - Open [superstore_raw.xlsx](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/42f4d5ca168bb9a02a098f2a6e8271a85738d6e5/superstore_raw.xlsx) in Google Sheets. 
@@ -62,7 +62,7 @@ The goal of this project is to:
      
    ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/36eb3ff56f5fb32ec1bb385ad04580e474260c25/Images/Create_Database%20Result%20Screenshot.jpg)
      
-#### 4. **Import SQL into MySQL**:
+#### 4. **Import SQL File into MySQL**:
    - **Steps**:  
       1. **Connect to Server**:  
             Open MySQL Workbench and connect to your MySQL server.  
@@ -86,7 +86,7 @@ The goal of this project is to:
       - **Progress Tracking**: Visual progress bar for large files.  
       - **Error Logging**: Detailed error messages if the import fails.  
 
-5. **Run Analysis Queries**:
+#### **Queries**
    - **Steps**:
      
        1. **Rename the Table**
