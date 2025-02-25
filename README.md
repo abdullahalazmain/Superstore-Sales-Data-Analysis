@@ -222,53 +222,53 @@ The goal of this project is to:
 
 #### **RFM Segmentation**
    - **Steps**:
-        1. **Calculate RFM Metrics**
+        1. **Create/Replace View for RFM Raw Metrics**
         ```sql
-         WITH rfm_raw AS (
+         CREATE OR REPLACE VIEW RFM_RAW_DATA AS
+         SELECT
+             Customer_ID,
+             DATEDIFF('2014-01-01', MAX(Order_Date)) AS Recency,
+             COUNT(DISTINCT Order_ID) AS Frequency,
+             SUM(Sales) AS Monetary
+         FROM sales_data
+         GROUP BY Customer_ID;
+        ```
+
+       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis-In-MySQL/blob/983065f39094db1c5c1b60a4dfa5ab4a5c7422ce/Images/Create%20or%20Replace%20View%20for%20RFM%20Raw%20Metrics.jpg)
+
+        5. **RFM Segmentation Using the View**
+        ```sql
+         CREATE OR REPLACE VIEW RFM_SCORES AS
+         WITH rfm_scores AS (
              SELECT
                  Customer_ID,
-                 DATEDIFF('2014-01-01', MAX(Order_Date)) AS Recency, -- Assuming dataset ends in 2013
-                 COUNT(Order_ID) AS Frequency,
-                 SUM(Sales) AS Monetary
-             FROM sales_data
-             GROUP BY Customer_ID
+                 Recency,
+                 Frequency,
+                 Monetary,
+                 NTILE(3) OVER (ORDER BY Recency DESC) AS R_Score,
+                 NTILE(3) OVER (ORDER BY Frequency) AS F_Score,
+                 NTILE(3) OVER (ORDER BY Monetary) AS M_Score
+             FROM RFM_RAW_DATA
          )
          SELECT
              Customer_ID,
              Recency,
              Frequency,
              Monetary,
-             NTILE(3) OVER (ORDER BY Recency DESC) AS R_Score,
-             NTILE(3) OVER (ORDER BY Frequency) AS F_Score,
-             NTILE(3) OVER (ORDER BY Monetary) AS M_Score
-         FROM rfm_raw;
+             R_Score,
+             F_Score,
+             M_Score,
+             CONCAT(R_Score, F_Score, M_Score) AS RFM_Cell,
+             CASE
+                 WHEN CONCAT(R_Score, F_Score, M_Score) IN ('333','323','332') THEN 'Champions'
+                 WHEN CONCAT(R_Score, F_Score, M_Score) LIKE '2__' THEN 'Potential Loyalists'
+                 WHEN CONCAT(R_Score, F_Score, M_Score) LIKE '1__' THEN 'At-Risk Customers'
+                 ELSE 'Needs Attention'
+             END AS RFM_Segment
+         FROM rfm_scores;
         ```
 
-       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/b22498004c5b60301875b581459fc91d8cd1983e/Images/Calculate%20RFM%20Metrics%20Results%20Screenshot.jpg)
-
-        5. **Segment Customers**
-        ```sql
-         WITH rfm_raw AS (
-             SELECT
-                 Customer_ID,
-                 DATEDIFF('2014-01-01', MAX(Order_Date)) AS Recency, -- Assuming dataset ends in 2013
-                 COUNT(Order_ID) AS Frequency,
-                 SUM(Sales) AS Monetary
-             FROM sales_data
-             GROUP BY Customer_ID
-         )
-         SELECT
-             Customer_ID,
-             Recency,
-             Frequency,
-             Monetary,
-             NTILE(3) OVER (ORDER BY Recency DESC) AS R_Score,
-             NTILE(3) OVER (ORDER BY Frequency) AS F_Score,
-             NTILE(3) OVER (ORDER BY Monetary) AS M_Score
-         FROM rfm_raw;
-        ```
-
-       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis/blob/b22498004c5b60301875b581459fc91d8cd1983e/Images/Calculate%20RFM%20Metrics%20Results%20Screenshot.jpg)
+       ![image](https://github.com/abdullahalazmain/Superstore-Sales-Data-Analysis-In-MySQL/blob/6e4a0dac5c6e677b0047d3e4c03734786f0eb292/Images/RFM%20Segmentation%20Using%20the%20View.jpg)
 ---
 ## 🔄 Alternative Way of Setup & Queries
 1. **Database Setup**: Created a MySQL database and table schema tailored for the Superstore dataset.
