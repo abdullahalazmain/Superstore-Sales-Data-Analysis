@@ -86,7 +86,7 @@ The goal of this project is to:
       - **Progress Tracking**: Visual progress bar for large files.  
       - **Error Logging**: Detailed error messages if the import fails.  
 
-#### **Queries**
+### **Queries**
    - **Steps**:
      
        1. **Rename the Table**
