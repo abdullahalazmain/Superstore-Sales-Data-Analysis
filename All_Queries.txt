@@ -1,0 +1,125 @@
+SELECT * FROM superstore.Sales_data;
+
+-- Rename the table
+RENAME TABLE Sales_data_01 TO Sales_data;
+
+-- Exact row count (may be slow for very large tables)
+SELECT COUNT(*) AS row_count FROM Sales_data; -- 9426
+
+-- Describe columns type & key
+DESCRIBE sales_data;
+
+-- Modify Date column types
+ALTER TABLE sales_data
+MODIFY order_date DATE,
+MODIFY ship_date DATE;
+
+-- Describe columns type & key
+DESCRIBE sales_data;
+
+-- Disable safe update mode
+SET SQL_SAFE_UPDATES = 0;
+
+-- Fix Date Columns
+  UPDATE sales_data
+  SET Order_Date = STR_TO_DATE(Order_Date, '%Y-%m-%d'),
+      Ship_Date = STR_TO_DATE(Ship_Date, '%Y-%m-%d');
+
+-- Handle numeric fields
+UPDATE sales_data 
+SET Product_Base_Margin = NULL 
+WHERE Product_Base_Margin = 'null' 
+   OR Product_Base_Margin = '';
+   
+-- Re-enable safe update mode
+SET SQL_SAFE_UPDATES = 1;
+
+SELECT * FROM superstore.Sales_data;
+
+-- Total Sales & Profit
+SELECT 
+    ROUND(SUM(Sales)) AS Total_Sales,
+    ROUND(SUM(Profit)) AS Total_Profit
+FROM sales_data;
+
+-- Sales by City
+SELECT 
+    City,
+    ROUND(SUM(Sales)) AS City_Sales
+FROM sales_data
+GROUP BY City
+ORDER BY City_Sales DESC;
+
+-- Top 10 Products
+SELECT 
+    Product_Name,
+    ROUND(SUM(Sales)) AS Total_Sales
+FROM sales_data
+GROUP BY Product_Name
+ORDER BY Total_Sales DESC
+LIMIT 10;
+
+-- Top 10 Most Profitable Products
+SELECT 
+    Product_Name,
+    ROUND(SUM(Profit)) AS Total_Profit
+FROM sales_data
+GROUP BY Product_Name
+ORDER BY Total_Profit DESC
+LIMIT 10;
+
+-- Monthly Sales Trends
+SELECT 
+    DATE_FORMAT(Order_Date, '%Y-%m') AS Month,
+    ROUND(SUM(Sales)) AS Monthly_Sales
+FROM sales_data
+GROUP BY Month
+ORDER BY Month;
+
+-- Return Rate Analysis
+SELECT 
+    Return_Status,
+    COUNT(*) AS Return_Count,
+    ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM sales_data), 2) AS Return_Percentage
+FROM sales_data
+GROUP BY Return_Status;
+
+-- Create/Replace View for RFM Raw Metrics
+CREATE OR REPLACE VIEW RFM_RAW_DATA AS
+SELECT
+    Customer_ID,
+    DATEDIFF('2014-01-01', MAX(Order_Date)) AS Recency,
+    COUNT(DISTINCT Order_ID) AS Frequency,
+    SUM(Sales) AS Monetary
+FROM sales_data
+GROUP BY Customer_ID;
+
+-- RFM Segmentation Using the View
+CREATE OR REPLACE VIEW RFM_SCORES AS
+WITH rfm_scores AS (
+    SELECT
+        Customer_ID,
+        Recency,
+        Frequency,
+        Monetary,
+        NTILE(3) OVER (ORDER BY Recency DESC) AS R_Score,
+        NTILE(3) OVER (ORDER BY Frequency) AS F_Score,
+        NTILE(3) OVER (ORDER BY Monetary) AS M_Score
+    FROM RFM_RAW_DATA
+)
+SELECT
+    Customer_ID,
+    Recency,
+    Frequency,
+    Monetary,
+    R_Score,
+    F_Score,
+    M_Score,
+    CONCAT(R_Score, F_Score, M_Score) AS RFM_Cell,
+    CASE
+        WHEN CONCAT(R_Score, F_Score, M_Score) IN ('333','323','332') THEN 'Champions'
+        WHEN CONCAT(R_Score, F_Score, M_Score) LIKE '2__' THEN 'Potential Loyalists'
+        WHEN CONCAT(R_Score, F_Score, M_Score) LIKE '1__' THEN 'At-Risk Customers'
+        ELSE 'Needs Attention'
+    END AS RFM_Segment
+FROM rfm_scores;
